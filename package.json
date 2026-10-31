@@ -1,10 +1,27 @@
 {
   "name": "dsh-image-blur",
   "version": "0.2.5",
-  "private": true,
   "type": "module",
-  "description": "只对会话正文里的图片生效：默认盖一层模糊，图片右上角有「显示 / 模糊」按钮，点了「显示」才看清。",
+  "description": "DSH 插件：只对会话正文里的图片生效，默认盖一层模糊，图片右上角有「显示 / 模糊」按钮，点了「显示」才看清。",
   "license": "MIT",
+  "author": "kangjun <kangjunwk@163.com>",
+  "homepage": "https://github.com/kandsome1/dsh-image-blur#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kandsome1/dsh-image-blur.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kandsome1/dsh-image-blur/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "image",
+    "blur",
+    "nsfw",
+    "chat-ui"
+  ],
   "main": "index.js",
   "exports": {
     ".": "./index.js",
@@ -18,8 +35,13 @@
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
+    "docs/*.jpg",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
