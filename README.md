@@ -33,31 +33,31 @@
 
 需要 **DSH 0.2 及以上**。
 
+本插件**没有发布到 npm**，所以社区市场（Community Market）「可安装」里的一键安装走不通 —— 那条路要求条目能标准化出唯一的 npm 包名，并从 `registry.npmjs.org` 取到稳定的精确版本。用下面任一方式装：
+
 ### 方式一：设置 → 插件（推荐）
 
-1. 打开 **设置 → 插件**；
-2. 安装时填 GitHub 仓库地址 `https://github.com/kandsome1/dsh-image-blur`（从本机装则填插件目录的绝对路径）；
-3. 装完**彻底退出 DSH 再打开**。
+**设置 → 插件 → 安装本地包**，指向插件目录的绝对路径，例如 `D:\CODE_DeepSeek\Test20261009\dsh-image-blur`。
 
-### 方式二：交给 Agent 装
-
-在对话里直接说一句就行，DSH 会用它内置的 `plugin_manager` 完成安装：
-
-> 帮我装一下 `github:kandsome1/dsh-image-blur`
-
-（本质上是一条工具调用：`action: install_bundle`，`target` 填仓库地址或本机目录。）
-
-### 方式三：命令行
-
-装了 dsh CLI 的话：
+### 方式二：命令行
 
 ```bash
-dsh plugin --profile <你的 profile> add github:kandsome1/dsh-image-blur
-# 或从本机目录
-dsh plugin --profile <你的 profile> add link:D:\path\to\dsh-image-blur
+dsh plugin --profile <你的 profile> add D:\path\to\dsh-image-blur
 ```
 
-装好之后都要**彻底退出 DSH 再打开** —— 宿主侧的插件清单只在启动时装配一次。
+### 方式三：交给 Agent 装
+
+在对话里说一句「按这个目录装插件：`D:\path\to\dsh-image-blur`」，Agent 会用内置的 `plugin_manager`（`install_bundle`）完成安装。
+
+装完**彻底退出 DSH 再打开** —— 宿主侧的插件清单只在启动时装配一次。
+
+## 卸载与更新
+
+- **卸载**：设置 → 插件（或社区市场的「已安装」视图）里移除 `dsh-image-blur`。市场走官方管理器的 `removeBundle`，会在 pnpm 移除前先取消选中。
+- **更新**：按官方文档，**从 GitHub 或本地路径安装的 bundle 不能通过市场的「更新」按钮升级** —— 只有以包名保存为 registry spec、带 semver 的 bundle 才提供更新。本插件属于前者，所以升级方式是重新安装新目录（或发布到 npm 后改用市场安装）。
+- 装好或更新后如果提示 `restart-required`，改动在下次启动生效。
+
+> 安装/卸载/更新的边界以官方文档为准：`dsh-community-market` 的 [`docs/install-and-uninstall.zh.md`](https://github.com/anywhere-labs/dsh-desktop/blob/master/dsh-community-market/docs/install-and-uninstall.zh.md)。
 
 ## 使用
 
