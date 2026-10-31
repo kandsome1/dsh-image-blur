@@ -40,8 +40,6 @@ dsh plugin --profile web add dsh-image-blur@latest --registry=https://registry.n
 - 把 `web` 换成你自己的 profile 名（桌面版一般是 `desktop`）；
 - 装完**重启 DSH**，再**硬刷新浏览器**（`Ctrl+Shift+R`）。
 
-社区市场的「可安装」还要求这个包出现在你添加的目录来源里；直接跑上面这条命令不受这个限制。
-
 <details>
 <summary><b>让 Agent 帮你装</b></summary>
 
