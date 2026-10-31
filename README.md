@@ -33,12 +33,27 @@
 
 需要 **DSH 0.2 及以上**。包已发布到 npm：`dsh-image-blur`。
 
+### DSH Desktop
+
+**推荐走应用内**：设置 → 插件 → 安装，搜 `dsh-image-blur`（或粘贴包名 `dsh-image-blur@latest`）。桌面版的 profile 由应用自己管理，应用内安装最稳。
+
+装了 `dsh` 命令行的话，等价的复制命令是：
+
+```powershell
+dsh plugin --profile desktop add dsh-image-blur@latest --registry=https://registry.npmjs.org/
+```
+
+> 注意：`dsh plugin --profile web …` 在装有 Desktop 的机器上会装进 `profiles/web`，**不会**出现在 Desktop 里 —— 桌面版请用 `desktop` 这个 profile 名，或者直接用应用内安装。
+
+### dsh web / 自建
+
 ```powershell
 dsh plugin --profile web add dsh-image-blur@latest --registry=https://registry.npmjs.org/
 ```
 
-- 把 `web` 换成你自己的 profile 名（桌面版一般是 `desktop`）；
-- 装完**重启 DSH**，再**硬刷新浏览器**（`Ctrl+Shift+R`）。
+把 `web` 换成你自己的 profile 名。
+
+装完**重启 DSH**（应用内安装若提示 `restart-required` 也一样），再**硬刷新浏览器**（`Ctrl+Shift+R`）。
 
 <details>
 <summary><b>让 Agent 帮你装</b></summary>
@@ -46,7 +61,7 @@ dsh plugin --profile web add dsh-image-blur@latest --registry=https://registry.n
 把下面这段发给任意能执行本地命令的 Agent：
 
 ```text
-Install the dsh-image-blur plugin into my DSH <profile> profile from the official npm registry:
+Install the dsh-image-blur plugin from the official npm registry:
   dsh plugin --profile <profile> add dsh-image-blur@latest --registry=https://registry.npmjs.org/
 Then remind me to restart DSH and hard-refresh the browser (Ctrl+Shift+R).
 ```
