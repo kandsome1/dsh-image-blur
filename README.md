@@ -55,18 +55,6 @@ Then remind me to restart DSH and hard-refresh the browser (Ctrl+Shift+R).
 
 </details>
 
-<details>
-<summary><b>从本地源码安装</b></summary>
-
-```powershell
-git clone https://github.com/kandsome1/dsh-image-blur
-dsh plugin --profile web add .\dsh-image-blur
-```
-
-本地目录安装的 bundle **不能**通过市场的「更新」升级，改动后重新指向目录即可。
-
-</details>
-
 **更新**：重跑安装命令（或市场「已安装」视图里的 Check for updates），然后硬刷新。
 **卸载**：设置 → 插件（或市场「已安装」视图）里移除 `dsh-image-blur`。
 
