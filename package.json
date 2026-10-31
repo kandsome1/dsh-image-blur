@@ -36,7 +36,8 @@
     "locale/*.json",
     "icon.svg",
     "docs/*.jpg",
-    "README.md"
+    "README.md",
+    "README.en.md"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

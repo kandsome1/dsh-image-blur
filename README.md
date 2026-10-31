@@ -1,5 +1,7 @@
 # dsh-image-blur
 
+中文 | [English](README.en.md)
+
 > **DSH 插件**：对话里的图片默认盖一层模糊，点图片右上角的「显示」才看清。
 > 只在会话正文生效 —— 侧栏、右侧面板、插件页面、界面图标都不受影响。
 
@@ -141,7 +143,8 @@ dsh-image-blur/
 ├─ locale/{zh,en}.json 插件显示名与描述
 ├─ icon.svg            插件图标
 ├─ docs/               效果对比图（README 用）
-└─ README.md
+├─ README.md           中文（本文件）
+└─ README.en.md        英文
 ```
 
 ## 排障
