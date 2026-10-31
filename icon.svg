@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Image blur">
+  <defs>
+    <linearGradient id="ib-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b3550"/>
+      <stop offset="1" stop-color="#131826"/>
+    </linearGradient>
+    <filter id="ib-soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4.6"/>
+    </filter>
+    <clipPath id="ib-round">
+      <rect x="4" y="4" width="56" height="56" rx="14"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#ib-round)">
+    <rect x="4" y="4" width="56" height="56" fill="url(#ib-bg)"/>
+    <g filter="url(#ib-soft)">
+      <circle cx="20" cy="22" r="10.5" fill="#5b8def"/>
+      <circle cx="45" cy="29" r="12" fill="#8f6bff"/>
+      <circle cx="27" cy="47" r="11" fill="#39c0a4"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 32c4.6-6.4 10.6-9.6 18-9.6S45.4 25.6 50 32c-4.6 6.4-10.6 9.6-18 9.6S18.6 38.4 14 32Z"/>
+    <circle cx="32" cy="32" r="4.6" fill="#ffffff" stroke="none"/>
+  </g>
+</svg>

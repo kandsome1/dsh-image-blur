@@ -1,0 +1,13 @@
+# dsh-image-blur bundle patch.
+#
+# 只有一行宿主记录：宿主半边不做任何事（`index.js` 的 apply 是空的），
+# 真正干活的是 package.json 里 `dsh.client` 声明的浏览器半边：
+#   1. 往页面注入一份样式（img[data-dsh-imgblur="hidden"] → blur 滤镜）；
+#   2. 用 MutationObserver 盯住所有 <img>，尺寸够大的默认打上 "hidden"；
+#   3. 在 `shell.overlay` 槽里渲染一层穿透浮层，给每张被模糊的图挂一颗
+#      「显示 / 模糊」按钮（绝对定位，跟着滚动/窗口变化实时跟随）；
+#   4. 在 `settings.general.item` 槽里加一行开关 + 强度，写 localStorage。
+
+- insert:
+    - id: image-blur
+      name: 'dsh-image-blur'

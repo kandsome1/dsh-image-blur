@@ -1,0 +1,35 @@
+{
+  "name": "dsh-image-blur",
+  "version": "0.2.5",
+  "private": true,
+  "type": "module",
+  "description": "只对会话正文里的图片生效：默认盖一层模糊，图片右上角有「显示 / 模糊」按钮，点了「显示」才看清。",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Image Blur",
+    "description": "Blurs images in the conversation body only, until you click the Show button in the corner; the Blur button covers it again. Side panels, plugin pages and icons are left alone, and the image file is never modified."
+  },
+  "chip": {
+    "show": "Show",
+    "blur": "Blur",
+    "showTitle": "This image is blurred — click to show it",
+    "blurTitle": "Blur this image again",
+    "showAria": "Show this blurred image",
+    "blurAria": "Blur this image again"
+  },
+  "settings": {
+    "title": "Image blur",
+    "desc": "Images rendered in DSH are blurred by default; click “Show” in the corner to reveal, “Blur” to cover it again. The file itself is untouched.",
+    "offDesc": "Off: images render as-is and no Show / Blur button appears.",
+    "strength": "Strength",
+    "light": "Low",
+    "normal": "Medium",
+    "strong": "High"
+  }
+}

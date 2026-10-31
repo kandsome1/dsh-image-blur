@@ -1,0 +1,5 @@
+# 插件仓库自身：只需要挡掉运行/系统产物，源码与资源全部入库
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
