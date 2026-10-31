@@ -1,0 +1,55 @@
+name: publish
+
+# 推 tag 即发布（npm Trusted Publishing / OIDC，无需任何 token）
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: '要发布的 tag，例如 v0.2.8'
+        required: true
+
+permissions:
+  contents: read
+  id-token: write # OIDC：npm 用它换短期发布凭据，这是整条链路的关键权限
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest # 官方文档：只支持 GitHub 托管 runner
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false # 发布构建不要用缓存
+
+      - name: 校验 tag 与 package.json 版本一致
+        run: |
+          set -euo pipefail
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          ver="$(node -p "require('./package.json').version")"
+          echo "tag=$tag  version=$ver"
+          if [ "v$ver" != "$tag" ]; then
+            echo "::error::tag $tag 与 package.json 的 $ver 不一致，拒绝发布"
+            exit 1
+          fi
+
+      - name: 发布到 npm
+        # publishConfig 已指定 registry=npmjs、access=public；
+        # trusted publishing 下 npm 自动生成 provenance（公开仓库才有）。
+        run: npm publish
+
+      - name: 回读校验
+        run: |
+          set -euo pipefail
+          ver="$(node -p "require('./package.json').version")"
+          npm view "dsh-image-blur@$ver" version dist.shasum dist.unpackedSize
