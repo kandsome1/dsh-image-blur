@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "dsh-image-blur",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "type": "module",
   "description": "DSH 插件：只对会话正文里的图片生效，默认盖一层模糊，图片右上角有「显示 / 模糊」按钮，点了「显示」才看清。",
   "license": "MIT",

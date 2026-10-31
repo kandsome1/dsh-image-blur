@@ -31,33 +31,44 @@
 
 ## 安装
 
-需要 **DSH 0.2 及以上**。包已发布到 npm：**`dsh-image-blur`**。
+需要 **DSH 0.2 及以上**。包已发布到 npm：`dsh-image-blur`。
 
-### 方式一：设置 → 插件（推荐）
-
-**设置 → 插件 → 安装**，填 npm 包 `dsh-image-blur@0.2.6`；从本机装则填插件目录的绝对路径，例如 `D:\path\to\dsh-image-blur`。
-
-> 社区市场（Community Market）的「可安装」一键装还要求该包出现在你添加的**目录来源**里；只发布到 npm 不会自动成为市场条目。
-
-### 方式二：命令行
-
-```bash
-dsh plugin --profile <你的 profile> add dsh-image-blur@0.2.6
-# 本地目录开发时
-dsh plugin --profile <你的 profile> add D:\path\to\dsh-image-blur
+```powershell
+dsh plugin --profile web add dsh-image-blur@latest --registry=https://registry.npmjs.org/
 ```
 
-### 方式三：交给 Agent 装
+- 把 `web` 换成你自己的 profile 名（桌面版一般是 `desktop`）；
+- 装完**重启 DSH**，再**硬刷新浏览器**（`Ctrl+Shift+R`）。
 
-在对话里说一句「装一下 npm 上的 dsh-image-blur」，Agent 会用内置的 `plugin_manager`（`install_bundle`）完成安装。
+社区市场的「可安装」还要求这个包出现在你添加的目录来源里；直接跑上面这条命令不受这个限制。
 
-装完**彻底退出 DSH 再打开** —— 宿主侧的插件清单只在启动时装配一次。
+<details>
+<summary><b>让 Agent 帮你装</b></summary>
 
-## 卸载与更新
+把下面这段发给任意能执行本地命令的 Agent：
 
-- **卸载**：设置 → 插件（或社区市场的「已安装」视图）里移除 `dsh-image-blur`。市场走官方管理器的 `removeBundle`，会在 pnpm 移除前先取消选中。
-- **更新**：以 npm 包名安装的 bundle 可以在「已安装」视图里检查更新（`updateBundle`，DSH 0.2.2+）；从 GitHub 或本地路径安装的不能，需要重装新目录。
-- 装好或更新后如果提示 `restart-required`，改动在下次启动生效。
+```text
+Install the dsh-image-blur plugin into my DSH <profile> profile from the official npm registry:
+  dsh plugin --profile <profile> add dsh-image-blur@latest --registry=https://registry.npmjs.org/
+Then remind me to restart DSH and hard-refresh the browser (Ctrl+Shift+R).
+```
+
+</details>
+
+<details>
+<summary><b>从本地源码安装</b></summary>
+
+```powershell
+git clone https://github.com/kandsome1/dsh-image-blur
+dsh plugin --profile web add .\dsh-image-blur
+```
+
+本地目录安装的 bundle **不能**通过市场的「更新」升级，改动后重新指向目录即可。
+
+</details>
+
+**更新**：重跑安装命令（或市场「已安装」视图里的 Check for updates），然后硬刷新。
+**卸载**：设置 → 插件（或市场「已安装」视图）里移除 `dsh-image-blur`。
 
 > 安装/卸载/更新的边界以官方文档为准：`dsh-community-market` 的 [`docs/install-and-uninstall.zh.md`](https://github.com/anywhere-labs/dsh-desktop/blob/master/dsh-community-market/docs/install-and-uninstall.zh.md)。
 
