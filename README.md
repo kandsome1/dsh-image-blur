@@ -31,17 +31,33 @@
 
 ## 安装
 
-需要 **DSH 0.2 及以上**。两种方式任选：
+需要 **DSH 0.2 及以上**。
 
-```text
-# ① 从本机目录安装
-plugin_manager  action: install_bundle  target: D:\path\to\dsh-image-blur
+### 方式一：设置 → 插件（推荐）
 
-# ② 从 GitHub 安装
-plugin_manager  action: install_bundle  target: github:kandsome1/dsh-image-blur
+1. 打开 **设置 → 插件**；
+2. 安装时填 GitHub 仓库地址 `https://github.com/kandsome1/dsh-image-blur`（从本机装则填插件目录的绝对路径）；
+3. 装完**彻底退出 DSH 再打开**。
+
+### 方式二：交给 Agent 装
+
+在对话里直接说一句就行，DSH 会用它内置的 `plugin_manager` 完成安装：
+
+> 帮我装一下 `github:kandsome1/dsh-image-blur`
+
+（本质上是一条工具调用：`action: install_bundle`，`target` 填仓库地址或本机目录。）
+
+### 方式三：命令行
+
+装了 dsh CLI 的话：
+
+```bash
+dsh plugin --profile <你的 profile> add github:kandsome1/dsh-image-blur
+# 或从本机目录
+dsh plugin --profile <你的 profile> add link:D:\path\to\dsh-image-blur
 ```
 
-安装后**彻底退出 DSH 再打开**（宿主侧的插件清单只在启动时装配一次）。
+装好之后都要**彻底退出 DSH 再打开** —— 宿主侧的插件清单只在启动时装配一次。
 
 ## 使用
 
